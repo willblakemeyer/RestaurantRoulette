@@ -1,0 +1,17 @@
+header {
+  background-color: darkgray;
+}
+
+body {
+  background-color: lightblue;
+  margin: 0;
+  padding: 0;
+}
+
+.main-content {
+  background-color: grey;
+}
+
+footer {
+  background-color: darkgrey;
+}
