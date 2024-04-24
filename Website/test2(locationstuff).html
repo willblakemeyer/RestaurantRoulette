@@ -7,90 +7,93 @@
     <title></title>
     <meta name="description" content="" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <script src="https://apis.google.com/js/client:plusone.js" type="application/javascript"></script>
-    <script src="https://apis.google.com/js/api.js" type="text/javascript"></script>
+    <script
+      src="https://apis.google.com/js/client:plusone.js"
+      type="application/javascript"
+    ></script>
+    <script
+      src="https://apis.google.com/js/api.js"
+      type="text/javascript"
+    ></script>
     <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
     <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&callback=initialize"></script> -->
-    
   </head>
   <body>
     <h1>HTML Geolocation</h1>
     <p>Click the button to get nearby restaurants.</p>
-    
+
     <!-- <button onclick="getLocation()">Try It</button> -->
     <button onclick="getRestaurants()">Try It</button>
     <!-- <button onclick="initialize()">Try It</button> -->
-    
+
     <p id="demo"></p>
-    <p id="latitude" style="display:hidden"></p>
-    <p id="longitude" style="display:hidden"></p>
+    <p id="latitude" style="display: hidden"></p>
+    <p id="longitude" style="display: hidden"></p>
     <div id="map_canvas"></div>
     <script>
-    const x = document.getElementById("demo");
-    
-    function getLocation() {
-      if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(showPosition);
-      } else { 
-        x.innerHTML = "Geolocation is not supported by this browser.";
+      const x = document.getElementById("demo");
+
+      function getLocation() {
+        if (navigator.geolocation) {
+          navigator.geolocation.getCurrentPosition(showPosition);
+        } else {
+          x.innerHTML = "Geolocation is not supported by this browser.";
+        }
       }
-    }
-    
-    function showPosition(position) {
-      x.innerHTML = "Latitude: " + position.coords.latitude + 
-      "<br>Longitude: " + position.coords.longitude;
-      latitude.innerHTML = position.coords.latitude;
-      longitude.innerHTML = position.coords.longitude;
-    }
 
-    async function getRestaurants() {
-      getLocation();
-      // https://maps.googleapis.com/maps/api/place/search/xml?location=49.260691,-123.137784&radius=500&sensor=false&key=*PlacesAPIKey*&types=restaurant
+      function showPosition(position) {
+        x.innerHTML =
+          "Latitude: " +
+          position.coords.latitude +
+          "<br>Longitude: " +
+          position.coords.longitude;
+        latitude.innerHTML = position.coords.latitude;
+        longitude.innerHTML = position.coords.longitude;
+      }
 
-      var restRequest = gapi.client.request({
-        'path': 'https://people.googleapis.com/v1/people/me/connections',
-        'params': {'sortOrder': 'LAST_NAME_ASCENDING'}
-      }).execute(function(r) {
-        console.log("response:");
-        console.log(r);
-      });
-      console.log(restRequest);
-      var restRequest = gapi.client.request({
-        'path': 'https://maps.googleapis.com/maps/api/place/search/xml?location=49.260691,-123.137784&radius=500&sensor=false&key=AIzaSyB41DRUbKWJHPxaFjMAwdrzWzbVKartNGg&types=restaurant',
-        // 'params': {'sortOrder': 'LAST_NAME_ASCENDING'}
-      });
-      console.log(restRequest);
+      async function getRestaurants() {
+        getLocation();
+        // https://maps.googleapis.com/maps/api/place/search/xml?location=49.260691,-123.137784&radius=500&sensor=false&key=*PlacesAPIKey*&types=restaurant
 
-      // const res = await fetch('https://maps.googleapis.com/maps/api/place/search/xml?location=49.260691,-123.137784&radius=500&sensor=false&key=AIzaSyB41DRUbKWJHPxaFjMAwdrzWzbVKartNGg&types=restaurant', {mode: 'cors'});
-      // obj = await res.json();
-      // console.log(obj);
-    }
+        var restRequest = gapi.client
+          .request({
+            path: "https://people.googleapis.com/v1/people/me/connections",
+            params: { sortOrder: "LAST_NAME_ASCENDING" },
+          })
+          .execute(function (r) {
+            console.log("response:");
+            console.log(r);
+          });
+        console.log(restRequest);
+        var restRequest = gapi.client.request({
+          path: "https://maps.googleapis.com/maps/api/place/search/xml?location=49.260691,-123.137784&radius=500&sensor=false&key=AIzaSyB41DRUbKWJHPxaFjMAwdrzWzbVKartNGg&types=restaurant",
+          // 'params': {'sortOrder': 'LAST_NAME_ASCENDING'}
+        });
+        console.log(restRequest);
 
+        // const res = await fetch('https://maps.googleapis.com/maps/api/place/search/xml?location=49.260691,-123.137784&radius=500&sensor=false&key=AIzaSyB41DRUbKWJHPxaFjMAwdrzWzbVKartNGg&types=restaurant', {mode: 'cors'});
+        // obj = await res.json();
+        // console.log(obj);
+      }
 
+      var directionsDisplay, directionsService, map;
 
-
-
-
-
-
-
-
-
-
-
-    var directionsDisplay,
-    directionsService,
-    map;
-
-    function initialize() {
-      getLocation();
-      var directionsService = new google.maps.DirectionsService();
-      directionsDisplay = new google.maps.DirectionsRenderer();
-      var chicago = new google.maps.LatLng(41.850033, -87.6500523);
-      var mapOptions = { zoom:7, mapTypeId: google.maps.MapTypeId.ROADMAP, center: chicago }
-      map = new google.maps.Map(document.getElementById("map_canvas"), mapOptions);
-      directionsDisplay.setMap(map);
-    }
+      function initialize() {
+        getLocation();
+        var directionsService = new google.maps.DirectionsService();
+        directionsDisplay = new google.maps.DirectionsRenderer();
+        var chicago = new google.maps.LatLng(41.850033, -87.6500523);
+        var mapOptions = {
+          zoom: 7,
+          mapTypeId: google.maps.MapTypeId.ROADMAP,
+          center: chicago,
+        };
+        map = new google.maps.Map(
+          document.getElementById("map_canvas"),
+          mapOptions
+        );
+        directionsDisplay.setMap(map);
+      }
     </script>
   </body>
 </html>
