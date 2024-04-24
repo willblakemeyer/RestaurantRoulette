@@ -1,17 +1,44 @@
 header {
-  background-color: darkgray;
+  background-color: #f2edeb;
+  padding: 1%;
+  font-family: Helvetica, Arial, sans-serif;
 }
 
 body {
-  background-color: lightblue;
+  background-color: #a31621;
+  font-family: Helvetica, Arial, sans-serif;
+  margin-left: 5%;
   margin: 0;
   padding: 0;
 }
 
 .main-content {
   background-color: grey;
+  color:#f2edeb;
+  margin-left: 5%;
 }
 
 footer {
-  background-color: darkgrey;
+  background-color: #fabc2a;
+  margin-top: 10%;
+  padding: 3%;
+}
+
+h1 {
+  margin-left: 5%;
+  font-family: Helvetica, Arial, sans-serif;
+}
+
+h2 {
+  margin-left: 5%;
+  font-family: Helvetica, Arial, sans-serif;
+  color:#f2edeb;
+}
+
+button {
+  border-radius: 8%;
+  border: #fabc2a solid 4pt;
+  fill: #f2edeb;
+  font-family: Helvetica, Arial, sans-serif;
+  font-weight: bold;
 }
