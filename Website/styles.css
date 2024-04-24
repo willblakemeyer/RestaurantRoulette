@@ -14,11 +14,14 @@ body {
 
 .main-content {
   background-color: grey;
+  color:#f2edeb;
   margin-left: 5%;
 }
 
 footer {
-  background-color: darkgrey;
+  background-color: #fabc2a;
+  margin-top: 10%;
+  padding: 3%;
 }
 
 h1 {
@@ -29,6 +32,7 @@ h1 {
 h2 {
   margin-left: 5%;
   font-family: Helvetica, Arial, sans-serif;
+  color:#f2edeb;
 }
 
 button {
