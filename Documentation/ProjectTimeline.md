@@ -26,26 +26,29 @@
 - Make code to generate wheel on JavaScript canvas (wheel.html).
 - Do code review, ensure code is well-commented.
 ### Wednesday - Monday
+- Consider security concerns with hosting website with GitHub Pages while using Google Map's API with an API key.
 - Incorporate chosen navigation method between index.html and wheel.html into layout design.
 - Ensure we can pull relevant restaurant data (location, rating, etc.) and place them into accessible variables.
 - Put relevant restaurant data into usable formats.
 - Make wheel generation code generate "slices" of itself based on numerical input (will eventually be from restaurants and their stars).
 - Use method designed to pass information between index.html and wheel.html to share restaurant data if/when necessary.
 - Begin adapt wheel's style to fit theme.
-- Make wheel spin when button is clicked.
+- Make wheel spin and slowly come to a stop when button is clicked.
+- Add spinner arrow to wheel.
 - Make restaurant data be pulled when index.html "Let's Eat" button is clicked.
 
 ## Week 3
 ### Monday - Wednesday
-- Do code review, ensure code is well-commented.
 - Continue improving aesthetics.
 - Ensure wheel is populated according to restaurant data and provided with space according to their # of stars from Google reviews. Potentially implement color coding at this point.
 - Focus on debugging, work out what we couldn't accomplish in previous tasks.
 ### Wednesday - Monday
-- Consider implementing basic sound design if we have time (crunch sound when button is pressed, relaxing background music, etc.).
+- Make wheel "select" whatever item it stops on. Ensure chosen restaurant is displayed somehow.
 - Debug anything that's left to debug.
 - Ensure aesthetics are where we want them to be.
 - Adapt to any design or functionality changes.
+- Allow universal usage of Google Map's API (might stop after project is complete to avoid API usage costs) so anyone can test our project for themselves.
 - Address technical debt.
+- Consider implementing basic sound design if we have time (crunch sound when button is pressed, relaxing background music, etc.).
 - Consider adding light animations when buttons are clicked or when elements move (besides the wheel, as that should already be done at this point).
 - Do code review, ensure code is well-commented.
