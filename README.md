@@ -8,8 +8,10 @@
 > - [Standup Records](https://github.com/willblakemeyer/RestaurantRoulette/tree/master/Documentation/Stand-ups)
 
 ## Team Members
+> [Description](https://github.com/willblakemeyer/RestaurantRoulette/blob/master/Documentation/Team_Roles.md)
 > - Blake Meyer - Scrum Master
 > - Jake Inthavongsa - Security Lead
 > - Carissa Kelley - Design Lead
 > - Jon Olivia - Technical/Programming Lead
 > - Mitchell Deer - Document Lead
+
