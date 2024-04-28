@@ -1,10 +1,10 @@
 # Restaurant Roulette
 
 ## Index
-> - [Executive Summary](https://github.com/willblakemeyer/RestaurantRoulette/blob/master/Documentation/ExecutiveSummary.md)
-> - [Initial Security Statement](https://github.com/willblakemeyer/RestaurantRoulette/blob/master/Documentation/Security_Statements/Initial_Statement.md)
-> - [Project Outline](https://github.com/willblakemeyer/RestaurantRoulette/blob/master/Documentation/ProjectOutline.md)
-> - [Project Timeline](https://github.com/willblakemeyer/RestaurantRoulette/blob/master/Documentation/ProjectTimeline.md)
+> - [Executive Summary](https://github.com/willblakemeyer/RestaurantRoulette/blob/master/Documentation/Week1/ExecutiveSummary.md)
+> - [Initial Security Statement](https://github.com/willblakemeyer/RestaurantRoulette/blob/master/Documentation/Week1/Security_Statements/Initial_Statement.md)
+> - [Project Outline](https://github.com/willblakemeyer/RestaurantRoulette/blob/master/Documentation/Week1/ProjectOutline.md)
+> - [Project Timeline](https://github.com/willblakemeyer/RestaurantRoulette/blob/master/Documentation/Week1/ProjectTimeline.md)
 > - [Standup Records](https://github.com/willblakemeyer/RestaurantRoulette/tree/master/Documentation/Stand-ups)
 
 ## Team Members
