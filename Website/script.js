@@ -3,6 +3,11 @@ function helloWorld() {
   alert("Searching " + locationEntered + " for the best place to eat!");
 }
 
+function fillLocation() {
+  var input = document.getElementById("locationEntered");
+  input.value = getLocation();
+}
+
 function currentLocation() {
   alert("Searching based on your current location...");
 }
@@ -24,6 +29,14 @@ function getLocation() {
 
 function ask_api(position) {
   var location = [position.coords.longitude, position.coords.latitude];
+  console.log(location);
+  var input = document.getElementById("locationEntered");
+  input.value = "Lat: "+location[0]+", Long: "+location[1];
+
+
+
+  // this code will not run for now...
+  return;
   const link = `https://www.google.com/maps/search/food+near+me/@${location[0]},${location[1]},17z/data=!3m1!4b1?entry=ttu`;
 
   var webpage = new XMLHttpRequest();

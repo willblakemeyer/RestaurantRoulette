@@ -9,11 +9,19 @@
     <meta name="description" content="" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" href="styles.css" />
+    
+    
+    <!-- Google APIs... -->
+    <script src="https://apis.google.com/js/client:plusone.js" type="application/javascript"></script>
+    <script src="https://apis.google.com/js/api.js?key=AIzaSyDqNQz1JWjLjCKNDnobimxrlPnozzjdO0U" type="text/javascript"></script>
+    <!-- <script src="https://www.googleapis.com/auth/drive" type="text/javascript"></script> -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&callback=initialize&key=AIzaSyDqNQz1JWjLjCKNDnobimxrlPnozzjdO0U"></script>
+    <!-- End of Google APIs -->
   </head>
   <body>
     <header><h1>Welcome to Restaurant Roulette</h1></header>
     <div id="main-content">
-      <p>Funny Wheel go here</p>
       <form>
         <input
           placeholder="Enter an location"
@@ -22,7 +30,7 @@
         />
         <button type="button" onclick="getLocation()">Let's Eat!</button>
         <br />
-        <button type="button" onclick="currentLocation()">
+        <button type="button" onclick="fillLocation()">
           Autofill my current location
         </button>
       </form>
