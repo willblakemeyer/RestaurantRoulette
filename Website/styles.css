@@ -26,6 +26,10 @@ body {
   padding: 2em;
 }
 
+.locationBox {
+  margin: auto; margin-left: 5%; margin-right: 5%;
+}
+
 form {
   margin: 2em;
   border: solid 3px #fabc2a;
@@ -49,6 +53,11 @@ footer {
   background-color: #fabc2a;
   margin-top: 10%;
   padding: 2em;
+}
+
+label {
+  color:#fabc2a;
+  font-size: 2em;
 }
 
 h1 {
