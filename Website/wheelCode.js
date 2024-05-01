@@ -3,11 +3,12 @@ let numberOfTimes = 2;
 let lines = 360 / (restaurants * numberOfTimes);
 
 function setup() {
-  createCanvas(400, 400);
+  var canvas = createCanvas(400, 400);
+
+  canvas.parent("funny-wheel");
 }
 
 function draw() {
-  background(220);
   translate(width / 2, height / 2);
 
   let angle = frameCount * 0.1;
@@ -31,13 +32,13 @@ function drawWheel() {
   }
 
 
-  for (let i = 0; i < numSegments; i += lines) {
-    let startAngle = i * segmentAngle;
-    let endAngle = (i + lines) * segmentAngle;
-    stroke(255, 255, 0); 
-    strokeWeight(4);
-    line(0, 0, 150 * cos(startAngle), 150 * sin(startAngle));
-    stroke(255, 0, 0); 
-    line(0, 0, 150 * cos(endAngle), 150 * sin(endAngle));
-  }
+//   for (let i = 0; i < numSegments; i += lines) {
+//     let startAngle = i * segmentAngle;
+//     let endAngle = (i + lines) * segmentAngle;
+//     stroke(255, 255, 0); 
+//     strokeWeight(4);
+//     line(0, 0, 150 * cos(startAngle), 150 * sin(startAngle));
+//     stroke(255, 0, 0); 
+//     line(0, 0, 150 * cos(endAngle), 150 * sin(endAngle));
+//   }
 }
