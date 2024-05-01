@@ -25,8 +25,10 @@ function setup() {
 }
 
 function spinWheel() {
-  counter = 0;
-  doSpin = true;
+  if (doStop == false && doSpin == false) {
+    counter = 0;
+    doSpin = true;  
+  }
 }
 
 function draw() {
