@@ -4,12 +4,12 @@ function verifyAndUseLoc() {
   
   //check if format is lat. / long.:
   var lc_locVal = locVal.toLowerCase();
-  if (lc_locVal.substring(0,4) == "Lat:") {
+  if (lc_locVal.substring(0,4) == "lat:") {
 
-    var spltLoc = lc_locVal.split("Lat: ")[0];
+    var spltLoc = lc_locVal.split("lat: ")[0];
 
-    lat  = (int)(spltLoc.split(", Long: ")[0]);
-    long = (int)(spltLoc.split(", Long: ")[1]);
+    lat  = (int)(spltLoc.split(", long: ")[0]);
+    long = (int)(spltLoc.split(", long: ")[1]);
 
   } else {
     //validate address... if invalid, return false. Else, define latitude and longitude.
@@ -21,7 +21,7 @@ function verifyAndUseLoc() {
       //how to set up auto complete field: https://www.youtube.com/watch?v=c3MjU9E9buQ&ab_channel=GoogleMapsPlatform
     //---
 
-    
+
   }
 
   if (typeof lat !== "undefined" && typeof long !== "undefined") {
