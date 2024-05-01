@@ -1,3 +1,6 @@
+var map;
+var service;
+
 function verifyAndUseLoc() {
   var lat, long;
   var locVal = document.getElementById("locationEntered").value;
@@ -65,11 +68,23 @@ function getLocation() {
 
 function ask_api(position) {
   var location = [position.coords.longitude, position.coords.latitude];
-  console.log(location);
+  var current = new google.maps.LatLng(location[1], location[0]);
   var input = document.getElementById("locationEntered");
   input.value = "Lat: "+location[0]+", Long: "+location[1];
 
+  map = new google.maps.Map(document.getElementById("map"), {
+          center: current,
+          zoom: 15,
+        });
 
+        var request = {
+          location: current,
+          radius: `${milesToMeters(dist)}`, //This is in meters
+          query: "restaurants near me",
+        };
+
+  service = new google.maps.places.PlacesService(map);
+  service.textSearch(request, callback);
 
   // this code will not run for now...
   return;
@@ -83,4 +98,14 @@ function ask_api(position) {
   );
   webpage.send();
   console.log(webpage.response);
+}
+
+function callback(results, status) {
+  var resturants = [];
+  if (status == google.maps.places.PlacesServiceStatus.OK) {
+    for (var i = 0; i < results.length; i++) {
+      resturants.push(results[i].name);
+    }
+    alert(resturants);
+  }
 }
