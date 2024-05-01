@@ -1,5 +1,4 @@
-var map;
-var service;
+
 var slider = document.getElementById("slider");
 
 function verifyAndUseLoc() {
@@ -30,24 +29,6 @@ function verifyAndUseLoc() {
   if (typeof lat !== "undefined" && typeof long !== "undefined") {
     //store lat. / long. in local storage & redirect to wheel.html
 
-    var current = new google.maps.LatLng(lat, long);
-
-    map = new google.maps.Map(document.getElementById("map"), {
-      center: current,
-      zoom: 15,
-    });
-    var dist = slider.value;
-
-    var request = {
-      location: current,
-      radius: `${milesToMeters(dist)}`, //This is in meters
-      query: "restaurants near me",
-    };
-
-    service = new google.maps.places.PlacesService(map);
-    service.textSearch(request, callback);
-
-
     localStorage.setItem("Latitude",lat);
     localStorage.setItem("Longitude",long);
 
@@ -75,30 +56,38 @@ function currentLocation() {
 //Takes from your computer location
 function getLocation() {
   if (navigator.geolocation) {
-    return navigator.geolocation.getCurrentPosition(ask_api);
+    navigator.geolocation.getCurrentPosition(ask_api);
   } else {
     return alert("Geolocation is not supported by this browser.");
   }
 }
 
+function milesToMeters(miles) {
+  return miles * 1609;
+}
 
 function ask_api(position) {
   var location = [position.coords.longitude, position.coords.latitude];
+  var current = new google.maps.LatLng(location[1], location[0]);
+  var map;
+  var service;
   var input = document.getElementById("locationEntered");
+  
+  map = new google.maps.Map(document.getElementById("map"), {
+    center: current,
+    zoom: 15,
+  });
+
+  var request = {
+    location: current,
+    radius: `${milesToMeters(slider.value)}`, //This is in meters
+    query: "restaurants near me",
+  };
+
+  service = new google.maps.places.PlacesService(map);
+  service.textSearch(request, callback);
+  
   input.value = "Lat: "+location[0]+", Long: "+location[1];
-
-  // this code will not run for now...
-  return;
-  const link = `https://www.google.com/maps/search/food+near+me/@${location[0]},${location[1]},17z/data=!3m1!4b1?entry=ttu`;
-
-  var webpage = new XMLHttpRequest();
-  webpage.open("get", link);
-  webpage.setRequestHeader(
-    "Content-Type",
-    "application/x-www-form-urlencoded; charset=UTF-8"
-  );
-  webpage.send();
-  console.log(webpage.response);
 }
 
 function callback(results, status) {
@@ -107,10 +96,8 @@ function callback(results, status) {
     for (var i = 0; i < results.length; i++) {
       resturants.push(results[i].name);
     }
-    return resturants;
+    localStorage.resturants = JSON.stringify(resturants);
   }
 }
 
-function milesToMeters(miles) {
-  return miles * 1609;
-}
+
