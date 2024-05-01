@@ -5,7 +5,7 @@
     <script src="jquery-1.6.1.js"></script>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <title></title>
+    <title>Restaurant Roulette - Home</title>
     <meta name="description" content="" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="icon" type="image/x-icon" href="/Website/Images/restaurantRouletteICON.png">
@@ -56,16 +56,17 @@
         <input
           id="slider"
           type="range"
-          min="0"
+          min="1"
           max="30"
-          value="0"
+          value="10"
           oninput="slider_number.innerText = this.value"
+          style="padding:0;"
         />
-        <p id="slider_number">0</p>
+        <p id="slider_number">Restaurants Within <strong style="font-size: 2em; color: #fabc2a;"><var>#</var></strong> Miles</p>
       </div>
       <div id="map"></div>
     </div>
-    <footer><p>I am the footer</p></footer>
+    <footer><p style="margin-left: 0;">I am the footer</p></footer>
     <script src="script.js"></script>
   </body>
 </html>
