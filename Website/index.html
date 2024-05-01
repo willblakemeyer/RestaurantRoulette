@@ -9,32 +9,51 @@
     <meta name="description" content="" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" href="styles.css" />
-    
-    
+
     <!-- Google APIs... -->
-    <script src="https://apis.google.com/js/client:plusone.js" type="application/javascript"></script>
-    <script src="https://apis.google.com/js/api.js?key=AIzaSyDqNQz1JWjLjCKNDnobimxrlPnozzjdO0U" type="text/javascript"></script>
+    <script
+      src="https://apis.google.com/js/client:plusone.js"
+      type="application/javascript"
+    ></script>
+    <script
+      src="https://apis.google.com/js/api.js?key=AIzaSyDqNQz1JWjLjCKNDnobimxrlPnozzjdO0U"
+      type="text/javascript"
+    ></script>
     <!-- <script src="https://www.googleapis.com/auth/drive" type="text/javascript"></script> -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
     <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&callback=initialize&key=AIzaSyDqNQz1JWjLjCKNDnobimxrlPnozzjdO0U"></script>
     <!-- End of Google APIs -->
   </head>
   <body>
-    <header><h1>Welcome to Restaurant Roulette</h1></header>
+    <header>
+      <img
+        src="/Website/Images/restaurantRoulette.png"
+        style="max-width: 250px; margin-left: 1.5em"
+      />
+    </header>
     <div id="main-content">
       <form>
-        <label style="margin:auto; margin-left: 23%;">Your location:</label>
+        <label style="margin: auto; margin-left: 23%">Your location:</label>
         <input
           placeholder="Enter an location"
           type="text"
           id="locationEntered"
-          style="width:90%"
-        /><br>
-        <button type="button" onclick="fillLocation()" style="width:97%">
-          Autofill my current location
-        </button><br><br>
-        <button type="button" onclick="getLocation()" style="width:37%; margin: auto; margin-left: 32%;">Let's Eat!</button>
+          style="width: 90%"
+        /><br />
+        <button type="button" onclick="fillLocation()" style="width: 97%">
+          Autofill my current location</button
+        ><br /><br />
+        <button
+          type="button"
+          onclick="getLocation()"
+          style="width: 37%; margin: auto; margin-left: 32%"
+        >
+          Let's Eat!
+        </button>
       </form>
+      <div>
+        <input id="slider" type="range" min="0" max="30" value="0" />
+      </div>
     </div>
     <footer><p>I am the footer</p></footer>
     <script src="script.js"></script>
