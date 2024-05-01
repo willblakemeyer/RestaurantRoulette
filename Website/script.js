@@ -8,8 +8,8 @@ function verifyAndUseLoc() {
 
     var spltLoc = lc_locVal.split("lat: ")[0];
 
-    lat  = (int)(spltLoc.split(", long: ")[0]);
-    long = (int)(spltLoc.split(", long: ")[1]);
+    lat  = Number(spltLoc.split(", long: ")[0]);
+    long = Number(spltLoc.split(", long: ")[1]);
 
   } else {
     //validate address... if invalid, return false. Else, define latitude and longitude.
