@@ -5,8 +5,7 @@ function verifyAndUseLoc() {
   //check if format is lat. / long.:
   var lc_locVal = locVal.toLowerCase();
   if (lc_locVal.substring(0,4) == "lat:") {
-
-    var spltLoc = lc_locVal.split("lat: ")[0];
+    var spltLoc = lc_locVal.split("lat: ")[1];
 
     lat  = Number(spltLoc.split(", long: ")[0]);
     long = Number(spltLoc.split(", long: ")[1]);
