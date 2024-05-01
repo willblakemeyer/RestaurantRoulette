@@ -13,6 +13,15 @@ function verifyAndUseLoc() {
 
   } else {
     //validate address... if invalid, return false. Else, define latitude and longitude.
+
+
+    //Notes:
+      //convert to lat / long example request (missing API key):
+      // http://maps.google.com/maps/api/geocode/xml?address=1600+Amphitheatre+Parkway,+Mountain+View,+CA
+      //how to set up auto complete field: https://www.youtube.com/watch?v=c3MjU9E9buQ&ab_channel=GoogleMapsPlatform
+    //---
+
+    
   }
 
   if (typeof lat !== "undefined" && typeof long !== "undefined") {
