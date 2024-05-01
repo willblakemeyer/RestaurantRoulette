@@ -63,12 +63,17 @@ label {
 h1 {
   margin-left: 5%;
   font-family: 'Zilla Slab', Helvetica, Arial, sans-serif;
+  color:#fabc2a;
 }
 
 h2 {
   margin-left: 5%;
   font-family: 'Zilla Slab', Helvetica, Arial, sans-serif;
   color:#f2edeb;
+}
+
+p {
+  margin-left: 8%;
 }
 
 button {
