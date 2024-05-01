@@ -21,7 +21,7 @@
     ></script>
     <!-- <script src="https://www.googleapis.com/auth/drive" type="text/javascript"></script> -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
-    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&callback=initialize&key=AIzaSyDqNQz1JWjLjCKNDnobimxrlPnozzjdO0U"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&callback=initialize&key=AIzaSyDqNQz1JWjLjCKNDnobimxrlPnozzjdO0U&loading=async&libraries=places"></script>
     <!-- End of Google APIs -->
   </head>
   <body>
@@ -52,7 +52,15 @@
         </button>
       </form>
       <div>
-        <input id="slider" type="range" min="0" max="30" value="0" />
+        <input
+          id="slider"
+          type="range"
+          min="0"
+          max="30"
+          value="0"
+          oninput="slider_number.innerText = this.value"
+        />
+        <p id="slider_number">0</p>
       </div>
     </div>
     <footer><p>I am the footer</p></footer>

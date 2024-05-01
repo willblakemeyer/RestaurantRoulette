@@ -1,72 +1,47 @@
 // We will have classes and functions that interact with Google's API in here.
+      
+      var map;
+      var service;
+      var infowindow;
 
-class APIController {
-    constructor() {
-        this.userIP;
-        this.location;
-        this.userData;
-    }
+      function getLocation() {
+        if (navigator.geolocation) {
+          navigator.geolocation.getCurrentPosition(initialize);
+        } else {
+          alert("Hahaha this doesn't work");
+        }
+      }
 
-    getInfo() {
-        $.getJSON('https://api.db-ip.com/v2/free/self', function(data) {
-            this.userData = JSON.stringify(data, null, 2);
-          });
-    }
-}
-let map;
-let center;
+      function milesToMeters(miles) {
+        return miles * 1609;
+      }
 
-async function initMap() {
-  const { Map } = await google.maps.importLibrary("maps");
+      //By default it is about 500 m ~ . Just made it more american so we can understand/ Input is in miles
+      function initialize(position, dist = ".31") {
+        var location = [position.coords.longitude, position.coords.latitude];
+        var current = new google.maps.LatLng(location[1], location[0]);
 
-  center = { lat: 37.4161493, lng: -122.0812166 };
-  map = new Map(document.getElementById("map"), {
-    center: center,
-    zoom: 11,
-    // ...
-  });
-  findPlaces();
-}
+        map = new google.maps.Map(document.getElementById("map"), {
+          center: current,
+          zoom: 15,
+        });
 
-async function findPlaces() {
-  const { Place } = await google.maps.importLibrary("places");
-  const { AdvancedMarkerElement } = await google.maps.importLibrary("marker");
-  const request = {
-    textQuery: "Tacos in Mountain View",
-    fields: ["displayName", "location", "businessStatus"],
-    includedType: "restaurant",
-    locationBias: { lat: 37.4161493, lng: -122.0812166 },
-    isOpenNow: true,
-    language: "en-US",
-    maxResultCount: 8,
-    minRating: 3.2,
-    region: "us",
-    useStrictTypeFiltering: false,
-  };
-  //@ts-ignore
-  const { places } = await Place.searchByText(request);
+        var request = {
+          location: current,
+          radius: `${milesToMeters(dist)}`, //This is in meters
+          query: "restaurants near me",
+        };
 
-  if (places.length) {
-    console.log(places);
+        service = new google.maps.places.PlacesService(map);
+        service.textSearch(request, callback);
+      }
 
-    const { LatLngBounds } = await google.maps.importLibrary("core");
-    const bounds = new LatLngBounds();
-
-    // Loop through and get all the results.
-    places.forEach((place) => {
-      const markerView = new AdvancedMarkerElement({
-        map,
-        position: place.location,
-        title: place.displayName,
-      });
-
-      bounds.extend(place.location);
-      console.log(place);
-    });
-    map.fitBounds(bounds);
-  } else {
-    console.log("No results");
-  }
-}
-
-initMap();
+      function callback(results, status) {
+        var resturants = [];
+        if (status == google.maps.places.PlacesServiceStatus.OK) {
+          for (var i = 0; i < results.length; i++) {
+            resturants.push(results[i].name);
+          }
+          alert(resturants);
+        }
+      }
