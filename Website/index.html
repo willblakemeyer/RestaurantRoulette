@@ -8,7 +8,11 @@
     <title>Restaurant Roulette - Home</title>
     <meta name="description" content="" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="icon" type="image/x-icon" href="/Images/restaurantRouletteICON.png">
+    <link
+      rel="icon"
+      type="image/x-icon"
+      href="/Images/restaurantRouletteICON.png"
+    />
     <link rel="stylesheet" href="styles.css" />
 
     <!-- Google APIs... -->
@@ -44,7 +48,13 @@
         <button type="button" onclick="fillLocation()" style="width: 97%">
           Autofill my current location</button
         ><br />
-        <h2 style="margin: 0em;">Restaurants Within <strong style="font-size: 1.5em; color: #fabc2a;" id="slider_number">10</strong> Miles</h2>
+        <h2 style="margin: 0em">
+          Restaurants Within
+          <strong style="font-size: 1.5em; color: #fabc2a" id="slider_number"
+            >10</strong
+          >
+          Miles
+        </h2>
         <div>
           <input
             id="slider"
@@ -53,7 +63,7 @@
             max="30"
             value="10"
             oninput="slider_number.innerText = this.value"
-            style="padding:0; width: 96%;"
+            style="padding: 0; width: 96%"
           />
         </div>
         <br />
@@ -67,7 +77,7 @@
       </form>
       <div id="map"></div>
     </div>
-    <footer><p style="margin-left: 0; color:black">I am the footer</p></footer>
+    <footer><p style="margin-left: 0; color: black">I am the footer</p></footer>
     <script src="script.js"></script>
   </body>
 </html>

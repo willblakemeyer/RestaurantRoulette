@@ -1,5 +1,6 @@
 var map;
 var service;
+var slider = document.getElementById("slider");
 
 function verifyAndUseLoc() {
   var lat, long;
@@ -28,6 +29,24 @@ function verifyAndUseLoc() {
 
   if (typeof lat !== "undefined" && typeof long !== "undefined") {
     //store lat. / long. in local storage & redirect to wheel.html
+
+    var current = new google.maps.LatLng(lat, long);
+
+    map = new google.maps.Map(document.getElementById("map"), {
+      center: current,
+      zoom: 15,
+    });
+    var dist = slider.value;
+
+    var request = {
+      location: current,
+      radius: `${milesToMeters(dist)}`, //This is in meters
+      query: "restaurants near me",
+    };
+
+    service = new google.maps.places.PlacesService(map);
+    service.textSearch(request, callback);
+
 
     localStorage.setItem("Latitude",lat);
     localStorage.setItem("Longitude",long);
@@ -62,29 +81,11 @@ function getLocation() {
   }
 }
 
-//Takes from the input from user. Function should be built right under here
-
-//Request the data from API or webscraper????
 
 function ask_api(position) {
   var location = [position.coords.longitude, position.coords.latitude];
-  var current = new google.maps.LatLng(location[1], location[0]);
   var input = document.getElementById("locationEntered");
   input.value = "Lat: "+location[0]+", Long: "+location[1];
-
-  map = new google.maps.Map(document.getElementById("map"), {
-          center: current,
-          zoom: 15,
-        });
-
-        var request = {
-          location: current,
-          radius: `${milesToMeters(dist)}`, //This is in meters
-          query: "restaurants near me",
-        };
-
-  service = new google.maps.places.PlacesService(map);
-  service.textSearch(request, callback);
 
   // this code will not run for now...
   return;
@@ -106,6 +107,10 @@ function callback(results, status) {
     for (var i = 0; i < results.length; i++) {
       resturants.push(results[i].name);
     }
-    alert(resturants);
+    return resturants;
   }
+}
+
+function milesToMeters(miles) {
+  return miles * 1609;
 }
