@@ -1,3 +1,31 @@
+function verifyAndUseLoc() {
+  var lat, long;
+  var locVal = document.getElementById("locationEntered").value;
+  
+  //check if format is lat. / long.:
+  var lc_locVal = locVal.toLowerCase();
+  if (lc_locVal.substring(0,4) == "Lat:") {
+
+    var spltLoc = lc_locVal.split("Lat: ")[0];
+
+    lat  = (int)(spltLoc.split(", Long: ")[0]);
+    long = (int)(spltLoc.split(", Long: ")[1]);
+
+  } else {
+    //validate address... if invalid, return false. Else, define latitude and longitude.
+  }
+
+  if (typeof lat !== "undefined" && typeof long !== "undefined") {
+    //store lat. / long. in local storage & redirect to wheel.html
+
+    localStorage.setItem("Latitude",lat);
+    localStorage.setItem("Longitude",long);
+
+    window.location.replace("wheel.html");
+    return;
+  }
+}
+
 function helloWorld() {
   var locationEntered = document.getElementById("locationEntered").value;
   alert("Searching " + locationEntered + " for the best place to eat!");
