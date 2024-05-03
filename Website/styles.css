@@ -19,15 +19,9 @@ body {
   padding: 0;
 }
 
-.main-content {
+#main-content {
   background-color: #a31621;
   color:#f2edeb;
-  margin-left: 2em;
-  padding: 2em;
-}
-
-.locationBox {
-  margin: auto; margin-left: 5%; margin-right: 5%;
 }
 
 form {
