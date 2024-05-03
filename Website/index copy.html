@@ -2,22 +2,7 @@
 
 <html>
   <head>
-    <script>
-      // document.getElementById("locationEntered").addEventListener('input', function (evt) {
-      //   getGeolocation(this.value);
-      // });
-      var autocomplete;
-      function ask_api2() {
-        autocomplete = new google.maps.places.Autocomplete(
-          document.getElementById("locationEntered"), {
-            types: ['address'],
-            componentRestrictions: {'country' : ['US']},
-            fields: ['place_id','geometry','name']
-          }
-        );
-      }
-    </script>
-    <!-- <script src="jquery-1.6.1.js"></script> -->
+    <script src="jquery-1.6.1.js"></script>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <title>Restaurant Roulette - Home</title>
@@ -51,7 +36,6 @@
       />
     </header>
     <div id="main-content">
-      <img src="Images/RRcard1.png" style="max-width: 400px; padding-left: 2em; padding-top:2em;">
       <form>
         <label style="margin: auto; margin-left: 23%">Your location:</label>
         <input
@@ -92,8 +76,62 @@
       </form>
       <div id="map"></div>
     </div>
-    <footer><p style="margin-left: 0; color: black"><img src="Images/restaurantRouletteICON.png" style="width: 10%; max-width: 100px; margin-right: 3em;">I am the footer. This is a deep moment. Philosophy. What is footer?</p></footer>
+    <footer><p style="margin-left: 0; color: black">I am the footer</p></footer>
     <script src="script.js"></script>
+    <script>
+      // document.getElementById("locationEntered").addEventListener('input', function (evt) {
+      //   getGeolocation(this.value);
+      // });
+      var autocomplete;
+      function ask_api2() {
+        autocomplete = new google.maps.places.Autocomplete(
+          document.getElementById("locationEntered"), {
+            types: ['establishment'],
+            componentRestrictions: {'country' : ['AU']},
+            fields: ['place_id','geometry','name']
+          }
+        );
+        
+        autocomplete.addListener("place_changed",onPlaceChanged);
+      }
 
+
+      function onPlaceChanged() {
+        getGeolocation(document.getElementById("locationEntered"));
+        var place = autocomplete.getPlace();
+
+        console.log(place);
+        console.log(place.geometry);
+        console.log(place.geometry.location);
+        console.log(place.geometry.location.lat());
+        console.log(place.geometry.location.lng());
+
+      }
+
+      function getGeolocation(address) {
+        var apiKey = 'AIzaSyDqNQz1JWjLjCKNDnobimxrlPnozzjdO0U';
+        var geocodeUrl = 'https://maps.googleapis.com/maps/api/geocode/json?address=' + encodeURIComponent(address) + '&key=' + apiKey;
+
+        // Make a request to the Geocoding API
+        fetch(geocodeUrl)
+            .then(response => response.json())
+            .then(data => {
+                // Check if the request was successful
+                if (data.status === 'OK') {
+                    var location = data.results[0].geometry.location;
+                    var latitude = location.lat;
+                    var longitude = location.lng;
+                    
+                    console.log("Latitude:", latitude);
+                    console.log("Longitude:", longitude);
+                } else {
+                    console.error('Geocode was not successful for the following reason:', data.status);
+                }
+            })
+            .catch(error => {
+                console.error('Error fetching geolocation:', error);
+            });
+        }
+    </script>
   </body>
 </html>
