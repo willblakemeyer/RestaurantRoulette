@@ -49,6 +49,14 @@ input {
   margin-bottom: .25em;
 }
 
+#slider {
+  accent-color: #5b0c0c;
+}
+
+*:focus{
+  outline: 3px solid #ffffff
+}
+
 footer {
   background-color: #fabc2a;
   margin-top: 10%;
