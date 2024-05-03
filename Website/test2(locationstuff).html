@@ -7,14 +7,22 @@
     <title></title>
     <meta name="description" content="" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <script src="https://apis.google.com/js/client:plusone.js" type="application/javascript"></script>
-    <script src="https://apis.google.com/js/api.js?key=AIzaSyDqNQz1JWjLjCKNDnobimxrlPnozzjdO0U" type="text/javascript"></script>
+    <script
+      src="https://apis.google.com/js/client:plusone.js"
+      type="application/javascript"
+    ></script>
+    <script
+      src="https://apis.google.com/js/api.js?key=AIzaSyDqNQz1JWjLjCKNDnobimxrlPnozzjdO0U"
+      type="text/javascript"
+    ></script>
     <!-- <script src="https://www.googleapis.com/auth/drive" type="text/javascript"></script> -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
     <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&callback=initialize&key=AIzaSyDqNQz1JWjLjCKNDnobimxrlPnozzjdO0U"></script>
-    
+
     <style>
-      html, body, #map_canvas {
+      html,
+      body,
+      #map_canvas {
         margin: 0;
         padding: 0;
         height: 100%;
@@ -29,7 +37,7 @@
     <!-- <button onclick="getLocation()">Try It</button> -->
     <!-- <button onclick="getRestaurants()">Try It</button> -->
     <button onclick="initialize()">Try It</button>
-    
+
     <p id="demo"></p>
     <p id="latitude" style="display: hidden"></p>
     <p id="longitude" style="display: hidden"></p>
@@ -55,27 +63,29 @@
         longitude.innerHTML = position.coords.longitude;
       }
 
-    async function getRestaurants() {
-      getLocation();
-      // AIzaSyDqNQz1JWjLjCKNDnobimxrlPnozzjdO0U
-      // https://maps.googleapis.com/maps/api/place/search/xml?location=49.260691,-123.137784&radius=500&sensor=false&key=*PlacesAPIKey*&types=restaurant
+      async function getRestaurants() {
+        getLocation();
+        // AIzaSyDqNQz1JWjLjCKNDnobimxrlPnozzjdO0U
+        // https://maps.googleapis.com/maps/api/place/search/xml?location=49.260691,-123.137784&radius=500&sensor=false&key=*PlacesAPIKey*&types=restaurant
 
-      var restRequest = gapi.client.request({
-        'path': 'https://people.googleapis.com/v1/people/me/connections?key=AIzaSyDqNQz1JWjLjCKNDnobimxrlPnozzjdO0U&types=restaurant',
-        'params': {
-          'sortOrder': 'LAST_NAME_ASCENDING',
-          'key': 'AIzaSyDqNQz1JWjLjCKNDnobimxrlPnozzjdO0U'
-        }
-      }).execute(function(r) {
-        console.log("response:");
-        console.log(r);
-      });
-      console.log(restRequest);
-      var restRequest = gapi.client.request({
-        'path': 'https://maps.googleapis.com/maps/api/place/search/xml?location=49.260691,-123.137784&radius=500&sensor=false&key=AIzaSyDqNQz1JWjLjCKNDnobimxrlPnozzjdO0U&types=restaurant',
-        // 'params': {'key': 'AIzaSyDqNQz1JWjLjCKNDnobimxrlPnozzjdO0U'}
-      });
-      console.log(restRequest);
+        var restRequest = gapi.client
+          .request({
+            path: "https://people.googleapis.com/v1/people/me/connections?key=AIzaSyDqNQz1JWjLjCKNDnobimxrlPnozzjdO0U&types=restaurant",
+            params: {
+              sortOrder: "LAST_NAME_ASCENDING",
+              key: "AIzaSyDqNQz1JWjLjCKNDnobimxrlPnozzjdO0U",
+            },
+          })
+          .execute(function (r) {
+            console.log("response:");
+            console.log(r);
+          });
+        console.log(restRequest);
+        var restRequest = gapi.client.request({
+          path: "https://maps.googleapis.com/maps/api/place/search/xml?location=49.260691,-123.137784&radius=500&sensor=false&key=AIzaSyDqNQz1JWjLjCKNDnobimxrlPnozzjdO0U&types=restaurant",
+          // 'params': {'key': 'AIzaSyDqNQz1JWjLjCKNDnobimxrlPnozzjdO0U'}
+        });
+        console.log(restRequest);
 
         // const res = await fetch('https://maps.googleapis.com/maps/api/place/search/xml?location=49.260691,-123.137784&radius=500&sensor=false&key=AIzaSyB41DRUbKWJHPxaFjMAwdrzWzbVKartNGg&types=restaurant', {mode: 'cors'});
         // obj = await res.json();

@@ -1,36 +1,30 @@
-
 var slider = document.getElementById("slider");
 
 function verifyAndUseLoc() {
   var lat, long;
   var locVal = document.getElementById("locationEntered").value;
-  
+
   //check if format is lat. / long.:
   var lc_locVal = locVal.toLowerCase();
-  if (lc_locVal.substring(0,4) == "lat:") {
+  if (lc_locVal.substring(0, 4) == "lat:") {
     var spltLoc = lc_locVal.split("lat: ")[1];
 
-    lat  = Number(spltLoc.split(", long: ")[0]);
+    lat = Number(spltLoc.split(", long: ")[0]);
     long = Number(spltLoc.split(", long: ")[1]);
-
   } else {
     //validate address... if invalid, return false. Else, define latitude and longitude.
-
-
     //Notes:
-      //convert to lat / long example request (missing API key):
-      // http://maps.google.com/maps/api/geocode/xml?address=1600+Amphitheatre+Parkway,+Mountain+View,+CA
-      //how to set up auto complete field: https://www.youtube.com/watch?v=c3MjU9E9buQ&ab_channel=GoogleMapsPlatform
+    //convert to lat / long example request (missing API key):
+    // http://maps.google.com/maps/api/geocode/xml?address=1600+Amphitheatre+Parkway,+Mountain+View,+CA
+    //how to set up auto complete field: https://www.youtube.com/watch?v=c3MjU9E9buQ&ab_channel=GoogleMapsPlatform
     //---
-
-
   }
 
   if (typeof lat !== "undefined" && typeof long !== "undefined") {
     //store lat. / long. in local storage & redirect to wheel.html
 
-    localStorage.setItem("Latitude",lat);
-    localStorage.setItem("Longitude",long);
+    localStorage.setItem("Latitude", lat);
+    localStorage.setItem("Longitude", long);
 
     window.location.replace("wheel.html");
     return;
@@ -72,7 +66,7 @@ function ask_api(position) {
   var map;
   var service;
   var input = document.getElementById("locationEntered");
-  
+
   map = new google.maps.Map(document.getElementById("map"), {
     center: current,
     zoom: 15,
@@ -86,8 +80,8 @@ function ask_api(position) {
 
   service = new google.maps.places.PlacesService(map);
   service.textSearch(request, callback);
-  
-  input.value = "Lat: "+location[0]+", Long: "+location[1];
+
+  input.value = "Lat: " + location[0] + ", Long: " + location[1];
 }
 
 function callback(results, status) {
@@ -99,5 +93,3 @@ function callback(results, status) {
     localStorage.resturants = JSON.stringify(resturants);
   }
 }
-
-
