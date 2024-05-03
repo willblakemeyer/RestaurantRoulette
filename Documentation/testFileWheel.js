@@ -1,9 +1,8 @@
 //Blake variables
 var restaurantNames = ["El Testo Restuaranto", "Bob's Burgers", "Texas Cafe","","",""];
 var restaurantStars = [2,4,5,1,3,4];
-
 //---
-var scale1 = 1.3
+
 var restaurants = 4;
 var numberOfTimes = 2;
 var lines = 360 / (restaurants * numberOfTimes);
@@ -19,7 +18,7 @@ var doStop = false;
 var counterStopAmt = 60*3;
 
 function setup() {
-  var canvas = createCanvas(400, 400);
+  var canvas = createCanvas(425, 425);
 
   canvas.parent("funny-wheel");
   frameRate(60);
@@ -75,14 +74,14 @@ function drawWheel() {
     colorMode(RGB,255)
     stroke(0);
     strokeWeight(2);
-    arc(0, 0, 300 * scale1, 300 * scale1, (rotation) * segmentAngle, (rotation+restaurantStars[i]) * segmentAngle, PIE);
+    arc(0, 0, 400, 400, (rotation) * segmentAngle, (rotation+restaurantStars[i]) * segmentAngle, PIE);
     rotation+=restaurantStars[i];
   }
   // #FABC2A
   // R:250, G:188, B:42
   colorMode(RGB,255)
   fill(250,188,42);
-  circle(0,0,200 * scale1);
+  circle(0,0,300);
 
 
 //   for (let i = 0; i < numSegments; i += lines) {
