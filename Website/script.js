@@ -1,4 +1,5 @@
 var slider = document.getElementById("slider");
+var pos;
 
 function verifyAndUseLoc() {
   var lat, long;
@@ -11,6 +12,8 @@ function verifyAndUseLoc() {
 
     lat = Number(spltLoc.split(", long: ")[0]);
     long = Number(spltLoc.split(", long: ")[1]);
+    
+
   } else {
     //validate address... if invalid, return false. Else, define latitude and longitude.
     //Notes:
@@ -23,10 +26,12 @@ function verifyAndUseLoc() {
   if (typeof lat !== "undefined" && typeof long !== "undefined") {
     //store lat. / long. in local storage & redirect to wheel.html
 
+    pos = {coords:{longitude:long,latitude:lat}};
+    ask_api(pos);
     localStorage.setItem("Latitude", lat);
     localStorage.setItem("Longitude", long);
 
-    window.location.replace("wheel.html");
+    setTimeout(() => {window.location.replace("wheel.html")}, 1000);
     return;
   }
 }
@@ -51,6 +56,7 @@ function currentLocation() {
 function getLocation() {
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(ask_api);
+
   } else {
     return alert("Geolocation is not supported by this browser.");
   }
@@ -61,6 +67,7 @@ function milesToMeters(miles) {
 }
 
 function ask_api(position) {
+  //pos = {coords:{longitude:position.coords.longitude,latitude:position.coords.latitude}};
   var location = [position.coords.longitude, position.coords.latitude];
   var current = new google.maps.LatLng(location[1], location[0]);
   var map;
