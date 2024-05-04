@@ -1,6 +1,4 @@
 var slider = document.getElementById("slider");
-var pos;
-var coordinates = "";
 
 async function getGeolocation(address) {
   var apiKey = 'AIzaSyDqNQz1JWjLjCKNDnobimxrlPnozzjdO0U';
@@ -68,7 +66,7 @@ async function verifyAndUseLoc() {
   if (typeof lat !== "undefined" && typeof long !== "undefined") {
     //store lat. / long. in local storage & redirect to wheel.html
 
-    pos = {coords:{longitude:long,latitude:lat}};
+    var pos = {coords:{longitude:long,latitude:lat}};
     ask_api(pos);
     localStorage.setItem("Latitude", lat);
     localStorage.setItem("Longitude", long);
@@ -109,8 +107,8 @@ function milesToMeters(miles) {
 }
 
 function ask_api(position) {
-  //pos = {coords:{longitude:position.coords.longitude,latitude:position.coords.latitude}};
-  var location = [position.coords.latitude, position.coords.longitude];
+  pos = {coords:{longitude:position.coords.longitude,latitude:position.coords.latitude}};
+  var location = [position.coords.longitude, position.coords.latitude];
   var current = new google.maps.LatLng(location[1], location[0]);
   var map;
   var service;
