@@ -24,7 +24,7 @@ body {
   color:#f2edeb;
 }
 
-#input-card {
+form {
   margin: 2em;
   border: solid 3px #fabc2a;
   border-radius: 2cap;
@@ -41,7 +41,6 @@ input {
   padding-left: 1.25em;
   padding-right: 1.25em;
   margin-bottom: .25em;
-  max-width: 310px;
 }
 
 #slider {
@@ -87,7 +86,6 @@ p {
 }
 
 button {
-  color: black;
   border-radius: 1cap;
   border: #fabc2a solid 4pt;
   background-color: #f2edeb;

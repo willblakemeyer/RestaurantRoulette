@@ -44,24 +44,20 @@
     <!-- End of Google APIs -->
   </head>
   <body>
-
     <header>
       <img
         src="Images/restaurantRoulette.png"
         style="max-width: 250px; margin-left: 1.5em"
       />
     </header>
-
     <div id="main-content">
-      <img src="Images/RRcard1.png" 
-           id="input-card" 
-           style="max-width: 400px; border: 0px; padding: 0;">
-
-      <form id="input-card">
+      <img src="Images/RRcard1.png" style="max-width: 400px; padding-left: 2em; padding-top:2em;">
+      <form>
         <label style="margin: auto; margin-left: 23%">Your location:</label>
         <input
           placeholder="Enter an location"
           type="text"
+          id="locationEntered"
           style="width: 90%"
         /><br />
         <button type="button" onclick="fillLocation()" style="width: 97%">
@@ -94,16 +90,9 @@
           Let's Eat!
         </button>
       </form>
-
       <div id="map"></div>
     </div>
-    <footer><p style="margin-left: 0; color: black">
-      <img src="Images/restaurantRouletteICON.png" 
-           style="width: 10%; 
-                  max-width: 100px; 
-                  margin-right: 3em;">
-      I am the footer. This is a deep moment. Philosophy. What is footer?
-    </p></footer>
+    <footer><p style="margin-left: 0; color: black"><img src="Images/restaurantRouletteICON.png" style="width: 10%; max-width: 100px; margin-right: 3em;">I am the footer. This is a deep moment. Philosophy. What is footer?</p></footer>
     <script src="script.js"></script>
 
   </body>
