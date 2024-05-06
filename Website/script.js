@@ -109,7 +109,7 @@ function milesToMeters(miles) {
 function ask_api(position) {
   pos = {coords:{longitude:position.coords.longitude,latitude:position.coords.latitude}};
   var location = [position.coords.longitude, position.coords.latitude];
-  var current = new google.maps.LatLng(location[1], location[0]);
+  var current = new google.maps.LatLng(location[0], location[1]);
   var map;
   var service;
   var input = document.getElementById("locationEntered");
