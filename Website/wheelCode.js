@@ -28,7 +28,7 @@ var curRestaurant = "";
 var delaySet = false;
 var randAccel = 0;
 var randAccelDiv = 1000;
-var readOffset = Math.PI/2;
+var readOffset = Math.PI*0.5;
 
 function setup() {
   var canvas = createCanvas(400, 400);
@@ -60,7 +60,8 @@ function draw() {
   translate(width / 2, height / 2);
 
   // let angle = frameCount * 0.1;
-  angle = (angle-angleVel)%twoPI;
+  // angle = angle-angleVel;
+  angle = (angle+angleVel)%twoPI;
 
   if (doSpin) {
     angleVel = Math.min(0.5,angleVel+angleAccel+randAccel);
@@ -74,7 +75,7 @@ function draw() {
   } else if (doStop) {
     angleVel = Math.floor(Math.min(2,angleVel/((angleMultAccel-1)/4+1))*100000)/100000;
     if (angleVel <= 0) {
-      //select restaurant and show results (for now we just revert back to original state after 2 seconds of waiting.)
+      //select restaurant and show results (for now we just revert back to original state after 1 second of waiting.)
       if (!delaySet) {
         delaySet = true;
         var delay = setTimeout(function() {
@@ -82,7 +83,7 @@ function draw() {
           selectRestaurant();
           angleVel = startAngleVel;
           delaySet = false;
-        }, 2000);  
+        }, 1000);  
       }
         // doStop = false;
         // selectRestaurant();
@@ -93,6 +94,21 @@ function draw() {
   }
   rotate(angle);
   drawWheel();
+
+  // window.valuesArr = [];
+  // let numSegments = restaurantStars.reduce((partialSum, a) => partialSum + a, 0);
+  // let segmentAngle = TWO_PI / numSegments;
+  // let rotation = 0;
+  
+  // for (let i = 0; i < restaurantNames.length; i++) {
+  //   window.valuesArr.push([(angle+(rotation) * segmentAngle)%twoPI,(angle+(rotation+restaurantStars[i]) * segmentAngle)%twoPI]);
+  //   line(0, 0, 150 * cos(angle+(rotation) * segmentAngle), 150 * sin(angle+(rotation) * segmentAngle));
+  //   rotation+=restaurantStars[i];
+  //   strokeWeight(3);
+  //   stroke(255, 100, 100);
+  // }
+
+  // console.log(window.valuesArr);
 }
 
 function drawWheel() {
@@ -105,7 +121,7 @@ function drawWheel() {
     colorMode(RGB,255)
     fill(colors[i]);
     var anglePI = (angle+twoPI)%twoPI;
-    if (anglePI >= ((rotation) * segmentAngle+readOffset) % twoPI && anglePI < ((rotation+restaurantStars[i]) * segmentAngle+readOffset) % twoPI) {
+    if ((angle+(rotation) * segmentAngle+readOffset)%twoPI > (angle+(rotation+restaurantStars[i]) * segmentAngle+readOffset)%twoPI) {
       curRestaurant = restaurantNames[i];
     }
     // console.log(angle);
@@ -129,5 +145,5 @@ function drawWheel() {
 
   strokeWeight(3);
   stroke(100, 100, 255);
-  line(0, 0, 150 * cos(-angle+readOffset), 150 * sin(-angle+readOffset));
+  line(0, 0, 150 * cos(-angle-readOffset), 150 * sin(-angle-readOffset));
 }
