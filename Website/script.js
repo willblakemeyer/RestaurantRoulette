@@ -1,4 +1,5 @@
 var slider = document.getElementById("slider");
+var locationC
 
 async function getGeolocation(address) {
   var apiKey = 'AIzaSyDqNQz1JWjLjCKNDnobimxrlPnozzjdO0U';
@@ -108,8 +109,8 @@ function milesToMeters(miles) {
 
 function ask_api(position) {
   pos = {coords:{latitude:position.coords.latitude,longitude:position.coords.longitude}};
-  var location = [position.coords.latitude, position.coords.longitude];
-  var current = new google.maps.LatLng(location[0], location[1]);
+  locationC = [position.coords.latitude, position.coords.longitude];
+  var current = new google.maps.LatLng(locationC[0], locationC[1]);
   var map;
   var service;
   var input = document.getElementById("locationEntered");
@@ -129,7 +130,7 @@ function ask_api(position) {
   service = new google.maps.places.PlacesService(map);
   service.textSearch(request, callback);
 
-  input.value = "Lat: " + location[0] + ", Long: " + location[1];
+  input.value = "Lat: " + locationC[0] + ", Long: " + locationC[1];
 }
 
 function callback(results, status) {
@@ -137,10 +138,39 @@ function callback(results, status) {
   var stars = [];
   if (status == google.maps.places.PlacesServiceStatus.OK) {
     for (var i = 0; i < results.length; i++) {
+      if (getDistanceFromLatLonInM(
+        results[i].geometry.location.lat(),
+        results[i].geometry.location.lng(),
+        locationC[0],
+        locationC[1]
+      ) > milesToMeters(slider.value)) {
+        continue;
+      }
+
       restaurants.push(results[i].name);
       stars.push(results[i].rating);
     }
     localStorage.restaurants = JSON.stringify(restaurants);
     localStorage.stars = JSON.stringify(stars);
   }
+}
+
+
+//copied from stackoverflow; adjusted from Km to meters.
+function getDistanceFromLatLonInM(lat1,lon1,lat2,lon2) {
+  var R = 6371; // Radius of the earth in km
+  var dLat = deg2rad(lat2-lat1);  // deg2rad below
+  var dLon = deg2rad(lon2-lon1); 
+  var a = 
+    Math.sin(dLat/2) * Math.sin(dLat/2) +
+    Math.cos(deg2rad(lat1)) * Math.cos(deg2rad(lat2)) * 
+    Math.sin(dLon/2) * Math.sin(dLon/2)
+    ; 
+  var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a)); 
+  var d = R * c; // Distance in km
+  return d*1000;
+}
+
+function deg2rad(deg) {
+  return deg * (Math.PI/180)
 }
