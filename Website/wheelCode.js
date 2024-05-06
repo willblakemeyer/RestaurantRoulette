@@ -3,8 +3,8 @@ var restaurantNames = ["El Testo Restuaranto", "Bob's Burgers", "Texas Cafe","KF
 var restaurantStars = [1,4,2,4,3,4];
 //---
 //Overwrite defaults...
-// restaurantNames = JSON.parse(localStorage.restaurants);
-// restaurantStars = JSON.parse(localStorage.stars);
+restaurantNames = JSON.parse(localStorage.restaurants);
+restaurantStars = JSON.parse(localStorage.stars);
 //---
 
 const twoPI = Math.PI*2;

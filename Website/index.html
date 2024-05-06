@@ -10,7 +10,7 @@
       function autocompleteFocus() {
         autocomplete = new google.maps.places.Autocomplete(
           document.getElementById("locationEntered"), {
-            types: ['address'],
+            types: ['geocode'],
             componentRestrictions: {'country' : ['US']},
             fields: ['place_id','geometry','name']
           }
