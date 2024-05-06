@@ -52,7 +52,7 @@ async function verifyAndUseLoc() {
     getGeolocation(locVal).then(coordinates => {
       console.log(coordinates);
       if (coordinates != "") {
-        pos = {coords:{longitude:coordinates[0],latitude:coordinates[1]}};
+        pos = {coords:{latitude:coordinates[0],longitude:coordinates[1]}};
         ask_api(pos);
         localStorage.setItem("Latitude", coordinates[0]);
         localStorage.setItem("Longitude", coordinates[1]);
@@ -66,7 +66,7 @@ async function verifyAndUseLoc() {
   if (typeof lat !== "undefined" && typeof long !== "undefined") {
     //store lat. / long. in local storage & redirect to wheel.html
 
-    var pos = {coords:{longitude:long,latitude:lat}};
+    var pos = {coords:{latitude:lat,longitude:long}};
     ask_api(pos);
     localStorage.setItem("Latitude", lat);
     localStorage.setItem("Longitude", long);
@@ -107,7 +107,7 @@ function milesToMeters(miles) {
 }
 
 function ask_api(position) {
-  pos = {coords:{longitude:position.coords.longitude,latitude:position.coords.latitude}};
+  pos = {coords:{latitude:position.coords.latitude,longitude:position.coords.longitude}};
   var location = [position.coords.latitude, position.coords.longitude];
   var current = new google.maps.LatLng(location[0], location[1]);
   var map;
