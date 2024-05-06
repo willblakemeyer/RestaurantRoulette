@@ -132,11 +132,14 @@ function ask_api(position) {
 }
 
 function callback(results, status) {
-  var resturants = [];
+  var restaurants = [];
+  var stars = [];
   if (status == google.maps.places.PlacesServiceStatus.OK) {
     for (var i = 0; i < results.length; i++) {
-      resturants.push(results[i].name);
+      restaurants.push(results[i].name);
+      stars.push(results[i].rating);
     }
-    localStorage.resturants = JSON.stringify(resturants);
+    localStorage.restaurants = JSON.stringify(restaurants);
+    localStorage.stars = JSON.stringify(stars);
   }
 }
