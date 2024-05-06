@@ -5,6 +5,8 @@ var restaurantStars = [1,4,2,4,3,4];
 //Overwrite defaults...
 restaurantNames = JSON.parse(localStorage.restaurants);
 restaurantStars = JSON.parse(localStorage.stars);
+restaurantAddress = JSON.parse(localStorage.addresses);
+restaurantOpen = JSON.parse(localStorage.open);
 //---
 
 const twoPI = Math.PI*2;
@@ -25,6 +27,8 @@ var doSpin = false;
 var doStop = false;
 var counterStopAmt = 60*3;
 var curRestaurant = "";
+var curAddress = "";
+var curRestOpen = "";
 var delaySet = false;
 var randAccel = 0;
 var randAccelDiv = 1000;
@@ -40,7 +44,7 @@ function setup() {
 function selectRestaurant() {
   //get wheel's current rotation & restaurant angle sums to figure out which restaurant wheel is on.
 
-  alert(curRestaurant);
+  alert(curRestaurant + ` \n Address: ${curAddress} \n Am I open: ${curRestOpen} `);
 }
 
 function spinWheel() {
@@ -123,6 +127,8 @@ function drawWheel() {
     var anglePI = (angle+twoPI)%twoPI;
     if ((angle+(rotation) * segmentAngle+readOffset)%twoPI > (angle+(rotation+restaurantStars[i]) * segmentAngle+readOffset)%twoPI) {
       curRestaurant = restaurantNames[i];
+      curAddress = restaurantAddress[i];
+      curRestOpen = restaurantOpen[i];
     }
     // console.log(angle);
     // console.log(angleDeg);
