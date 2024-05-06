@@ -37,11 +37,11 @@
       }
 
       function callback(results, status) {
-        var resturants = [];
+        var restaurants = [];
         if (status == google.maps.places.PlacesServiceStatus.OK) {
           for (var i = 0; i < results.length; i++) {
-            resturants.push(results[i].name);
+            restaurants.push(results[i].name);
           }
-          alert(resturants);
+          alert(restaurants);
         }
       }
