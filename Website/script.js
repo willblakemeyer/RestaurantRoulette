@@ -122,7 +122,8 @@ function ask_api(position) {
   var request = {
     location: current,
     radius: `${milesToMeters(slider.value)}`, //This is in meters
-    query: "restaurants near me",
+    query: "restaurants",
+    rankby: "distance"
   };
 
   service = new google.maps.places.PlacesService(map);
