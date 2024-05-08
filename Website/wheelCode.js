@@ -169,10 +169,20 @@ function display_map() {
     zoom: 14,
     mapTypeId: google.maps.MapTypeId.ROADMAP,
     center: current,
+    mapId: "main_map"
   };
+
   var mapping = new google.maps.Map(
     document.getElementById("map_canvas"),
     mapOptions
   );
+
+  const marker = new google.maps.marker.AdvancedMarkerElement({
+    mapping,
+    position: current,
+    title: 'place',
+});
+
+
   directionsDisplay.setMap(mapping);
 }
