@@ -99,8 +99,15 @@ button {
 }
 
 #map_canvas {
-  margin: 0;
-  padding: 0;
-  height: 100%;
-  width: 100%;
+  margin-top: 50px;
+  margin-right: 50px;
+  width: 1000px; 
+  height: 500px;
+  border: #fabc2a solid 4pt;
+  border-radius: 1cap;
+}
+
+#main-body {
+  display: flex;
+  justify-content: space-between;
 }

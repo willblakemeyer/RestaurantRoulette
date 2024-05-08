@@ -59,11 +59,12 @@ function spinWheel() {
 }
 
 function draw() {
-  background(0)
-  stroke(0,0,0)
-  strokeWeight(2);
+ 
+  background(163,22,33);
+  stroke(0,0,0);
   textSize(15);
   text(curRestaurant, 20, 20);
+  strokeWeight(2);
   translate(width / 2, height / 2);
 
   // let angle = frameCount * 0.1;
@@ -163,7 +164,7 @@ function display_map() {
   console.log("I am getting here atleast");
   directionsService = new google.maps.DirectionsService();
   var directionsDisplay = new google.maps.DirectionsRenderer();
-  var current = new google.maps.LatLng(40.7010306, -99.106506);
+  var current = new google.maps.LatLng(lat, long);
   var mapOptions = {
     zoom: 14,
     mapTypeId: google.maps.MapTypeId.ROADMAP,
@@ -174,5 +175,4 @@ function display_map() {
     mapOptions
   );
   directionsDisplay.setMap(mapping);
-  console.log("wtf??");
 }
