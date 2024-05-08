@@ -9,17 +9,22 @@
       var autocomplete;
       function autocompleteFocus() {
         autocomplete = new google.maps.places.Autocomplete(
-          document.getElementById("locationEntered"), {
-            types: ['geocode'],
-            componentRestrictions: {'country' : ['US']},
-            fields: ['place_id','geometry','name']
+          document.getElementById("locationEntered"),
+          {
+            types: ["geocode"],
+            componentRestrictions: { country: ["US"] },
+            fields: ["place_id", "geometry", "name"],
           }
         );
       }
 
-      window.addEventListener("load",function(){
+      window.addEventListener(
+        "load",
+        function () {
           autocompleteFocus();
-        },false);
+        },
+        false
+      );
     </script>
     <!-- <script src="jquery-1.6.1.js"></script> -->
     <meta charset="utf-8" />
@@ -49,13 +54,17 @@
   </head>
   <body>
     <header>
-      <img
-        src="Images/restaurantRoulette.png"
-        style="max-width: 250px; margin-left: 1.5em"
-      />
+      <a href="index.html"
+        ><img
+          src="Images/restaurantRoulette.png"
+          style="max-width: 250px; margin-left: 1.5em"
+      /></a>
     </header>
     <div id="main-content">
-      <img src="Images/RRcard1.png" style="max-width: 400px; padding-left: 2em; padding-top:2em;">
+      <img
+        src="Images/RRcard1.png"
+        style="max-width: 400px; padding-left: 2em; padding-top: 2em"
+      />
       <form>
         <label style="margin: auto; margin-left: 23%">Your location:</label>
         <input
@@ -96,8 +105,14 @@
       </form>
       <div id="map"></div>
     </div>
-    <footer><p style="margin-left: 0; color: black"><img src="Images/restaurantRouletteICON.png" style="width: 10%; max-width: 100px; margin-right: 3em;">I am the footer. This is a deep moment. Philosophy. What is footer?</p></footer>
+    <footer>
+      <p style="margin-left: 0; color: black">
+        <img
+          src="Images/restaurantRouletteICON.png"
+          style="width: 10%; max-width: 100px; margin-right: 3em"
+        />I am the footer. This is a deep moment. Philosophy. What is footer?
+      </p>
+    </footer>
     <script src="script.js"></script>
-
   </body>
 </html>
