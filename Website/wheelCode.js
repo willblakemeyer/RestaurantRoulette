@@ -106,13 +106,15 @@ function draw() {
   drawWheel();
   
   textSize(25);
-  rotate(-angle)
-  textAlign("center")
-  fill("black")
-  strokeWeight(30)
-  textWidth = 200
+  rotate(-angle);
+  textAlign("center");
+  fill("black");
+  strokeWeight(30);
+  textWidth = 200;
+  stroke("white");
   text("v", -(textWidth/2), -240, textWidth);
   strokeWeight(10)
+  stroke(250,188,42);
   text(curRestaurant, -(textWidth/2), -90, textWidth);
   textSize(20)
   strokeWeight(5)
