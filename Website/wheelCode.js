@@ -185,9 +185,10 @@ function display_map() {
   );
 
   const marker = new google.maps.marker.AdvancedMarkerElement({
-    mapping,
+    map: mapping,
     position: current,
     title: 'place',
+    label: curRestaurant,
 });
 
 
