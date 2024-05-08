@@ -109,10 +109,13 @@ function draw() {
   rotate(-angle)
   textAlign("center")
   fill("black")
-  strokeWeight(0)
+  strokeWeight(30)
   textWidth = 200
-  text(curRestaurant, -(textWidth/2), -80, textWidth);
+  text("v", -(textWidth/2), -240, textWidth);
+  strokeWeight(10)
+  text(curRestaurant, -(textWidth/2), -90, textWidth);
   textSize(20)
+  strokeWeight(5)
   text(curAddress, -(textWidth)/1.75, 10, textWidth*1.15);
   // window.valuesArr = [];
   // let numSegments = restaurantStars.reduce((partialSum, a) => partialSum + a, 0);
@@ -165,8 +168,8 @@ function drawWheel() {
   fill(250,188,42);
   circle(0,0,200 * scale1);
 
-  strokeWeight(3);
-  stroke(100, 100, 255);
+  strokeWeight(0);
+  stroke(250,188,42);
   line(0, 0, 150 * cos(-angle-readOffset), 150 * sin(-angle-readOffset));
 }
 
