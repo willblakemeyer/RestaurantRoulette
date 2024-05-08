@@ -5,3 +5,4 @@
 - Blake is researching how to implement directions w/ Jake
 - Blake added geolocations to be useed with the routes "way points"
 - Carissa working on styling of the wheel text, as well as the redirect text file
+- Add an arrow to the spinning wheel instead of a blue line
