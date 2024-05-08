@@ -108,11 +108,12 @@ function draw() {
   textSize(25);
   rotate(-angle)
   textAlign("center")
-  fill("white")
+  fill("black")
   strokeWeight(0)
   textWidth = 200
-  text(curRestaurant, -(textWidth/2), 0, textWidth);
-  text(curAddress, -(textWidth/1.25), 150, textWidth*1.5);
+  text(curRestaurant, -(textWidth/2), -80, textWidth);
+  textSize(20)
+  text(curAddress, -(textWidth)/1.75, 10, textWidth*1.15);
   // window.valuesArr = [];
   // let numSegments = restaurantStars.reduce((partialSum, a) => partialSum + a, 0);
   // let segmentAngle = TWO_PI / numSegments;
