@@ -7,6 +7,7 @@ restaurantNames = JSON.parse(localStorage.restaurants);
 restaurantStars = JSON.parse(localStorage.stars);
 var restaurantAddress = JSON.parse(localStorage.addresses);
 var restaurantOpen = JSON.parse(localStorage.open);
+var restaurantLocation = JSON.parse(localStorage.geolocations);
 var lat = localStorage.getItem("Latitude");
 var long = localStorage.getItem("Longitude");
 //---
@@ -31,6 +32,7 @@ var counterStopAmt = 60*3;
 var curRestaurant = "";
 var curAddress = "";
 var curRestOpen = "";
+var curLocation = "";
 var delaySet = false;
 var randAccel = 0;
 var randAccelDiv = 1000;
@@ -41,13 +43,14 @@ function setup() {
 
   canvas.parent("funny-wheel");
   frameRate(60);
+  display_map(lat,long);
 }
 
 function selectRestaurant() {
   //get wheel's current rotation & restaurant angle sums to figure out which restaurant wheel is on.
 
-  alert(curRestaurant + ` \n Address: ${curAddress} \n Am I open: ${curRestOpen} `);
-  display_map();
+  display_map(curLocation[0],curLocation[1]);
+  
 }
 
 function spinWheel() {
@@ -140,6 +143,7 @@ function drawWheel() {
       curRestaurant = restaurantNames[i];
       curAddress = restaurantAddress[i];
       curRestOpen = restaurantOpen[i];
+      curLocation = [restaurantLocation[i][0],restaurantLocation[i][1]];
     }
     // console.log(angle);
     // console.log(angleDeg);
@@ -165,13 +169,13 @@ function drawWheel() {
   line(0, 0, 150 * cos(-angle-readOffset), 150 * sin(-angle-readOffset));
 }
 
-function display_map() {
+function display_map(latitude, longitude) {
   var directionsDisplay, directionsService, mapping;
 
   console.log("I am getting here atleast");
   directionsService = new google.maps.DirectionsService();
   var directionsDisplay = new google.maps.DirectionsRenderer();
-  var current = new google.maps.LatLng(lat, long);
+  var current = new google.maps.LatLng(latitude, longitude);
   var mapOptions = {
     zoom: 14,
     mapTypeId: google.maps.MapTypeId.ROADMAP,
