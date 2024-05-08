@@ -99,9 +99,9 @@ button {
 }
 
 #map_canvas {
-  margin-top: 50px;
+  margin-top: 10px;
   margin-right: 50px;
-  width: 1000px; 
+  width: 900px; 
   height: 500px;
   border: #fabc2a solid 4pt;
   border-radius: 1cap;

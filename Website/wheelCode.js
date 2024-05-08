@@ -47,10 +47,15 @@ function setup() {
 }
 
 function selectRestaurant() {
-  //get wheel's current rotation & restaurant angle sums to figure out which restaurant wheel is on.
-
+  //show on map & update fields on GUI
   display_map(curLocation[0],curLocation[1]);
   
+  var lastRestaurant = document.getElementById("lastRestuarant");
+  var lastAddress = document.getElementById("lastAddress");
+  var lastRestOpen = document.getElementById("lastRestOpen");
+  lastRestaurant.innerHTML = "Restaurant: "+curRestaurant;
+  lastAddress.innerHTML = "Address: "+curAddress;
+  lastRestOpen.innerHTML = "Is Open: "+((curRestOpen) ? "Yes" : "No");
 }
 
 function spinWheel() {
