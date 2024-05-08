@@ -188,7 +188,6 @@ function display_map() {
     map: mapping,
     position: current,
     title: 'place',
-    label: curRestaurant,
 });
 
 
