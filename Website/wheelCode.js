@@ -113,11 +113,11 @@ function draw() {
   textWidth = 200;
   stroke("white");
   text("v", -(textWidth/2), -240, textWidth);
-  // strokeWeight(0) //was 10, but caused overlap with wheel.
+  strokeWeight(0) //was 10, but caused overlap with wheel.
   // stroke(250,188,42);
   text(curRestaurant, -(textWidth/2), -90, textWidth);
   textSize(20)
-  // strokeWeight(0) //was 5.
+  strokeWeight(0) //was 5.
   text(curAddress, -(textWidth)/1.75, 10, textWidth*1.15);
   // window.valuesArr = [];
   // let numSegments = restaurantStars.reduce((partialSum, a) => partialSum + a, 0);
