@@ -138,6 +138,7 @@ function callback(results, status) {
   var stars = [];
   var open = [];
   var addresses = [];
+  var geolocations = [];
   if (status == google.maps.places.PlacesServiceStatus.OK) {
     for (var i = 0; i < results.length; i++) {
       if (getDistanceFromLatLonInM(
@@ -148,15 +149,20 @@ function callback(results, status) {
       ) > milesToMeters(slider.value)) {
         continue;
       }
-
+      geolocations.push([
+        results[i].geometry.location.lat(),
+        results[i].geometry.location.lng()
+      ]);
       restaurants.push(results[i].name);
       stars.push(results[i].rating);
       open.push(results[i].opening_hours.open_now);
       addresses.push(results[i].formatted_address);
     }
+    
     localStorage.restaurants = JSON.stringify(restaurants);
     localStorage.stars = JSON.stringify(stars);
     localStorage.open = JSON.stringify(open);
+    localStorage.geolocations = JSON.stringify(geolocations);
     localStorage.addresses = JSON.stringify(addresses);
   }
 }
