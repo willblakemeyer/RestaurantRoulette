@@ -62,8 +62,7 @@ function draw() {
  
   background(163,22,33);
   stroke(0,0,0);
-  textSize(15);
-  text(curRestaurant, 20, 20);
+
   strokeWeight(2);
   translate(width / 2, height / 2);
 
@@ -102,7 +101,15 @@ function draw() {
   }
   rotate(angle);
   drawWheel();
-
+  
+  textSize(25);
+  rotate(-angle)
+  textAlign("center")
+  fill("white")
+  strokeWeight(0)
+  textWidth = 200
+  text(curRestaurant, -(textWidth/2), 0, textWidth);
+  text(curAddress, -(textWidth/1.25), 150, textWidth*1.5);
   // window.valuesArr = [];
   // let numSegments = restaurantStars.reduce((partialSum, a) => partialSum + a, 0);
   // let segmentAngle = TWO_PI / numSegments;
