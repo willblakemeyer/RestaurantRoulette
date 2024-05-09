@@ -183,9 +183,9 @@ function drawWheel() {
 function display_map(latitude, longitude) {
   var directionsDisplay, directionsService, mapping;
 
-  console.log("I am getting here atleast");
   directionsService = new google.maps.DirectionsService();
   var directionsDisplay = new google.maps.DirectionsRenderer();
+  var start = new google.maps.LatLng(lat,long);
   var current = new google.maps.LatLng(latitude, longitude);
   var mapOptions = {
     zoom: 14,
@@ -205,6 +205,22 @@ function display_map(latitude, longitude) {
     title: 'place',
 });
 
+ if (curRestaurant != "") {
+  var request = {
+    origin: start,
+    destination: current,
+    optimizeWaypoints: true,
+    travelMode: google.maps.DirectionsTravelMode.DRIVING
+};
+
+directionsService.route(request, function(response, status) {
+  if (status == google.maps.DirectionsStatus.OK) {
+      directionsDisplay.setDirections(response);
+      var route = response.routes[0];
+
+  }
+});
+ }
 
   directionsDisplay.setMap(mapping);
 }
