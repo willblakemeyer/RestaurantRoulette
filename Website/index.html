@@ -50,7 +50,7 @@
       type="text/javascript"
     ></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
-    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&key=AIzaSyDqNQz1JWjLjCKNDnobimxrlPnozzjdO0U&loading=async&libraries=places"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&key=AIzaSyDqNQz1JWjLjCKNDnobimxrlPnozzjdO0U&loading=async&libraries=places,marker"></script>
     <!-- End of Google APIs -->
   </head>
   <body>
@@ -70,11 +70,14 @@
       /></a>
     </header>
     <div id="main-body">
-    <div id="main-content" style="width:800px">
-      <img
+      <div>
+        <img
           src="Images/RRcard1.png"
           style="max-width: 400px; padding-left: 2em; padding-top: 2em"
         />
+      </div>
+      <div id="main-content" style="width:800px">
+
       <form style="width: 400px; padding-left: 2em; padding-top: 2em">
         <label style="margin: auto; margin-left: 23%">Your location:</label>
         <input
@@ -105,30 +108,28 @@
           />
         </div>
         <br />
+        <input type="radio" name="prompt" value="General" >
+        <label for="General">General</label><br>
+        <input type="radio" name="prompt" value="Fast Food" >
+        <label for="Fast Food">Fast Food</label><br>
+        <input type="radio" name="prompt" value="Asian">
+        <label for="Asian">Asian</label><br>
+        <input type="radio" name="prompt" value="American">
+        <label for="American">American</label><br>
+        <input type="radio" name="prompt" value="Mexican">
+        <label for="Mexican">Mexican</label>
         <button
           type="button"
           onclick="verifyAndUseLoc()"
-          style="width: 37%; margin: auto; margin-left: 32%"
+          style="width: 37%; margin: auto; margin-left: 32%; margin-top:10px"
         >
           Let's Eat!
         </button>
       </form>
-
-      </div>
-      <div>
-        <form id="additional" style="width:400px"><input type="radio" name="prompt" value="General" checked>
-          <label for="General">General</label><br>
-          <input type="radio" name="prompt" value="Fast Food" >
-          <label for="Fast Food">Fast Food</label><br>
-          <input type="radio" name="prompt" value="Asian">
-          <label for="Asian">Asian</label><br>
-        <input type="radio" name="prompt" value="American">
-        <label for="American">American</label><br>
-        <input type="radio" name="prompt" value="Mexican">
-        <label for="Mexican">Mexican</label></form>
       </div>
       <div style="padding-left: 30px;margin-left: 0%; margin-right: 75%;">
-        <p style="text-align: center; margin-left: -30px">Map</p>
+        <!-- <p style="text-align: center; margin-left: -30px">Map</p> -->
+        <br>
         <div id="map_canvas"></div>
       </div>
     </div>
@@ -152,7 +153,7 @@
             vid.play();
             vid.muted = false;
           } catch (e) {
-            console.log(e);
+            // console.log(e);
           }
         },1000);
       }
@@ -166,6 +167,16 @@
 
         },
         false
+      );
+      
+      var locationEntered = document.getElementById("locationEntered");
+      locationEntered.addEventListener(
+        "focusout",
+        function () {
+          getGeolocation(locationEntered.value).then(coordinates => {
+            display_map2(coordinates[0],coordinates[1]);
+          })
+        }
       );
     </script>
   </body>

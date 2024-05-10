@@ -15,8 +15,8 @@ async function getGeolocation(address) {
               var latitude = location.lat;
               var longitude = location.lng;
               
-              console.log("Latitude:", latitude);
-              console.log("Longitude:", longitude);
+              // console.log("Latitude:", latitude);
+              // console.log("Longitude:", longitude);
               return [latitude,longitude];
           } else {
               console.error('Geocode was not successful for the following reason:', data.status);
@@ -33,7 +33,6 @@ async function getGeolocation(address) {
 async function verifyAndUseLoc() {
   var lat, long;
   var locVal = document.getElementById("locationEntered").value;
-  
   //check if format is lat. / long.:
   var lc_locVal = locVal.toLowerCase();
   if (lc_locVal.substring(0, 4) == "lat:") {
@@ -51,7 +50,7 @@ async function verifyAndUseLoc() {
     //how to set up auto complete field: https://www.youtube.com/watch?v=c3MjU9E9buQ&ab_channel=GoogleMapsPlatform
     //---
     getGeolocation(locVal).then(coordinates => {
-      console.log(coordinates);
+      // console.log(coordinates);
       if (coordinates != "") {
         pos = {coords:{latitude:coordinates[0],longitude:coordinates[1]}};
         ask_api(pos);
@@ -103,7 +102,10 @@ function getLocation() {
   }
 }
 
-window.display_map = function(latitude, longitude) {
+display_map2 = function(latitude, longitude) {
+  if (!(typeof latitude === "number" || typeof longitude === "number")) {
+    return;
+  }
   var directionsDisplay, directionsService, mapping;
 
   directionsService = new google.maps.DirectionsService();
@@ -121,6 +123,11 @@ window.display_map = function(latitude, longitude) {
     document.getElementById("map_canvas"),
     mapOptions
   );
+  const marker = new google.maps.marker.AdvancedMarkerElement({
+    map: mapping,
+    position: current,
+    title: "place",
+  });
 }
 
 function milesToMeters(miles) {
@@ -145,7 +152,7 @@ function ask_api(position) {
     if (restaurantTypes[i].checked)
       restaurantType = restaurantTypes[i].value;
   }
-  console.log(restaurantType);
+  // console.log(restaurantType);
   // alert(restaurantType);
   var request = {
     location: current,
@@ -158,9 +165,11 @@ function ask_api(position) {
   service.textSearch(request, callback);
 
   input.value = "Lat: " + locationC[0] + ", Long: " + locationC[1];
+  display_map2(locationC[0],locationC[1]);
 }
 
 function callback(results, status) {
+  slider = document.getElementById("slider");
   var restaurants = [];
   var stars = [];
   var open = [];
@@ -174,7 +183,20 @@ function callback(results, status) {
         locationC[0],
         locationC[1]
       ) > milesToMeters(slider.value)) {
+        // console.log(milesToMeters(slider.value) + " < "+(getDistanceFromLatLonInM(
+        //   results[i].geometry.location.lat(),
+        //   results[i].geometry.location.lng(),
+        //   locationC[0],
+        //   locationC[1]
+        // )));
         continue;
+      } else {
+        // console.log(milesToMeters(slider.value) + " > "+(getDistanceFromLatLonInM(
+        //   results[i].geometry.location.lat(),
+        //   results[i].geometry.location.lng(),
+        //   locationC[0],
+        //   locationC[1]
+        // )));
       }
       geolocations.push([
         results[i].geometry.location.lat(),
@@ -182,7 +204,13 @@ function callback(results, status) {
       ]);
       restaurants.push(results[i].name);
       stars.push(results[i].rating);
-      open.push(results[i].opening_hours.open_now);
+      var isOpen = false;
+      try {
+        isOpen = results[i].opening_hours.isOpen();
+      } catch (e) {
+        //
+      }
+      open.push(isOpen);
       addresses.push(results[i].formatted_address);
     }
     
