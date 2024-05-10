@@ -103,6 +103,26 @@ function getLocation() {
   }
 }
 
+window.display_map = function(latitude, longitude) {
+  var directionsDisplay, directionsService, mapping;
+
+  directionsService = new google.maps.DirectionsService();
+  var directionsDisplay = new google.maps.DirectionsRenderer();
+  // var start = new google.maps.LatLng(lat, long);
+  var current = new google.maps.LatLng(latitude, longitude);
+  var mapOptions = {
+    zoom: 14,
+    mapTypeId: google.maps.MapTypeId.ROADMAP,
+    center: current,
+    mapId: "main_map",
+  };
+
+  var mapping = new google.maps.Map(
+    document.getElementById("map_canvas"),
+    mapOptions
+  );
+}
+
 function milesToMeters(miles) {
   return miles * 1609;
 }
@@ -115,7 +135,7 @@ function ask_api(position) {
   var service;
   var input = document.getElementById("locationEntered");
 
-  map = new google.maps.Map(document.getElementById("map"), {
+  map = new google.maps.Map(document.getElementById("map_canvas"), {
     center: current,
     zoom: 15,
   });
