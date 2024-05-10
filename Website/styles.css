@@ -1,27 +1,30 @@
 @font-face {
-  font-family: 'Zilla Slab';
+  font-family: "Zilla Slab";
   font-style: normal;
   font-weight: 400;
-  src: url(https://fonts.gstatic.com/s/zillaslab/v11/dFa6ZfeM_74wlPZtksIFajo6_V6LVlA.woff2) format('woff2');
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+  src: url(https://fonts.gstatic.com/s/zillaslab/v11/dFa6ZfeM_74wlPZtksIFajo6_V6LVlA.woff2)
+    format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
+    U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191,
+    U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
 
 header {
   background-color: #f2edeb;
   padding: 1em;
-  font-family: 'Zilla Slab', Helvetica, Arial, sans-serif;
+  font-family: "Zilla Slab", Helvetica, Arial, sans-serif;
 }
 
 body {
   background-color: #a31621;
-  font-family: 'Zilla Slab', Helvetica, Arial, sans-serif;
+  font-family: "Zilla Slab", Helvetica, Arial, sans-serif;
   margin: 0;
   padding: 0;
 }
 
 #main-content {
   background-color: #a31621;
-  color:#f2edeb;
+  color: #f2edeb;
 }
 
 form {
@@ -40,14 +43,14 @@ input {
   padding-bottom: 1em;
   padding-left: 1.25em;
   padding-right: 1.25em;
-  margin-bottom: .25em;
+  margin-bottom: 0.25em;
 }
 
 #slider {
   accent-color: #5b0c0c;
 }
 
-*:focus{
+*:focus {
   outline: 3px solid #ffffff;
 }
 
@@ -64,44 +67,45 @@ footer {
 }
 
 label {
-  color:#fabc2a;
+  color: #fabc2a;
   font-size: 2em;
 }
 
 h1 {
   margin-left: 5%;
-  font-family: 'Zilla Slab', Helvetica, Arial, sans-serif;
-  color:#fabc2a;
+  font-family: "Zilla Slab", Helvetica, Arial, sans-serif;
+  color: #fabc2a;
 }
 
 h2 {
   margin-left: 5%;
-  font-family: 'Zilla Slab', Helvetica, Arial, sans-serif;
-  color:#f2edeb;
+  font-family: "Zilla Slab", Helvetica, Arial, sans-serif;
+  color: #f2edeb;
 }
 
 p {
   margin-left: 2em;
-  color:#f2edeb;
+  color: #f2edeb;
 }
 
 button {
   border-radius: 1cap;
   border: #fabc2a solid 4pt;
   background-color: #f2edeb;
-  font-family: 'Zilla Slab', Helvetica, Arial, sans-serif;
+  font-family: "Zilla Slab", Helvetica, Arial, sans-serif;
   font-size: 1.2em;
   font-weight: bold;
   padding: 5px;
-  padding-left: .5em;
-  padding-right: .5em;
+  padding-left: 0.5em;
+  padding-right: 0.5em;
   margin: 5px;
 }
 
 #map_canvas {
   margin-top: 10px;
   margin-right: 50px;
-  width: 700px; 
+  margin-left: 10px;
+  width: 700px;
   height: 500px;
   border: #fabc2a solid 4pt;
   border-radius: 1cap;
@@ -110,4 +114,11 @@ button {
 #main-body {
   display: flex;
   justify-content: space-between;
+}
+
+#rest-info {
+  border: #fabc2a solid 4pt;
+  border-radius: 1cap;
+  margin-top: 50px;
+  margin-bottom: 200px;
 }
