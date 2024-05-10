@@ -31,6 +31,9 @@
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
+    <video height="256" loop autoplay muted controls id="vid" style="display:none">
+      <source src="ariaMath.mp3"></source>
+    </video>
     <header>
       <a href="index.html">
         <img
@@ -64,5 +67,33 @@
         <div id="map_canvas"></div>
       </div>
     </div>
+    <script src="script.js"></script>
+    <script>
+      function tryPlay() {
+        setTimeout(function() {
+          var vid = document.getElementById("vid");
+          try {
+            if (vid.muted || vid.paused) {
+              tryPlay();
+            }
+            vid.play();
+            vid.muted = false;
+          } catch (e) {
+            console.log(e);
+          }
+        },1000);
+      }
+      function playmusic() {
+        tryPlay();
+      }
+      window.addEventListener(
+        "load",
+        function () {
+          playmusic();
+
+        },
+        false
+      );
+    </script>
   </body>
 </html>
