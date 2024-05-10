@@ -119,11 +119,18 @@ function ask_api(position) {
     center: current,
     zoom: 15,
   });
-
+  var restaurantTypes = document.querySelectorAll('input[name="prompt"]');
+  var restaurantType = "";
+  for(let i=0; i< restaurantTypes.length; i++) {
+    if (restaurantTypes[i].checked)
+      restaurantType = restaurantTypes[i].value;
+  }
+  console.log(restaurantType);
+  // alert(restaurantType);
   var request = {
     location: current,
     radius: `${milesToMeters(slider.value)}`, //This is in meters
-    query: "restaurants",
+    query: "restaurants "+restaurantType,
     rankby: "distance"
   };
 
